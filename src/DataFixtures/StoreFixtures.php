@@ -15,13 +15,13 @@ class StoreFixtures extends Fixture
 
         for ($p=0; $p < 10; $p++) { 
             $product = new Product();
-            $actualPrice = $product->getPrice() || 10;
-            $reducedPrice = ((30 * 100) / $actualPrice);
+       
+            $initPrice = 100 ;
             $product->setName($faker->word( $nb = 3, $asText = false ))
                     ->setPrice($faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 200))
-                    ->setDiscountedPrice($reducedPrice)
+                    ->setDiscountedPrice($initPrice)
                     ->setType($faker->randomElement($array = array ('Electro-ménagé','Décoration Intérieur','Equipement Cusine')));
-            $manager->persist($product);
+                    $manager->persist($product);
         };
 
         $manager->flush();
