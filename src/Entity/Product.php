@@ -73,6 +73,13 @@ class Product
 
     public function setDiscountedPrice(?float $discounted_price): self
     {
+
+        $reducer = 0.30; 
+        $actualPrice = $this->getPrice();
+
+        $reducedPrice = $actualPrice - ($actualPrice * $reducer);
+
+        $discounted_price = $reducedPrice;
         $this->discounted_price = $discounted_price;
 
         return $this;
