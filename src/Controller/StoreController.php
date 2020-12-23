@@ -26,7 +26,6 @@ class StoreController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $discountRule = $form->getData();
-
             $em->persist($discountRule);
             $em->flush();
         }
