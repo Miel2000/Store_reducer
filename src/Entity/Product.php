@@ -30,7 +30,7 @@ class Product
     /**
      * @ORM\Column(type="float", nullable=true)
      */
-    private $discounted_price;
+    public $discounted_price;
 
     /**
      * @ORM\Column(type="string", length=200)

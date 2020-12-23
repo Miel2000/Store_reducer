@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Entity\DiscountRule;
 use App\Form\DiscountRuleType;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,8 +17,9 @@ class StoreController extends AbstractController
     /**
      * @Route("/store", name="store")
      */
-    public function index(EntityManagerInterface $em,Request $request): Response
-    {
+    public function index(EntityManagerInterface $em,Request $request, ProductRepository $productRepo): Response
+{
+
         $discountRule = new DiscountRule();
         $form = $this->createForm(DiscountRuleType::class, $discountRule);
 
@@ -31,7 +34,8 @@ class StoreController extends AbstractController
 
         return $this->render('store/index.html.twig', [
             'yeet' => 'yeboi',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'products' => $productRepo->findAll()
       
         ]);
     }
