@@ -3,9 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        <style>
+        body {
+            text-align:center;
+        }
+        </style>
+        {% endblock %}
     </head>
     <body>
+    
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
