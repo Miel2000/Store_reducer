@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Entity\DiscountRule;
 use App\Form\DiscountRuleType;
+use App\Repository\DiscountRuleRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,6 +37,18 @@ class StoreController extends AbstractController
             'form' => $form->createView(),
             'products' => $productRepo->findAll()
       
+        ]);
+    }
+
+    /**
+     * @Route("/rules", name="rules")
+     */
+    public function rules(DiscountRuleRepository $discountRuleRepo){
+
+        return $this->render('store/rules.html.twig', [
+            'yeet' => 'yeboi',
+            'discount_rules' => $discountRuleRepo->findAll()
+
         ]);
     }
 }

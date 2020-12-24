@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\DiscountRule;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,6 +38,8 @@ class Product
      */
     private $type;
 
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,23 +74,32 @@ class Product
         return $this->discounted_price;
     }
 
-    public function setDiscountedPrice(?float $discounted_price): self
+    public function setDiscountedPrice(?float $discounted_price, Product $product): self
     {
+    
 
-        $reducer = 0.30; 
-        $actualPrice = $this->getPrice();
-
-        $reducedPrice = $actualPrice - ($actualPrice * $reducer);
-
-        $discounted_price = $reducedPrice;
         $this->discounted_price = $discounted_price;
+        $reducer = 0.30; 
+      
+        if($this->getPrice() >= 100 && ($product->getType() === 'Electro-ménagé') ){
 
-        return $this;
+            $reducedPrice = $this->getPrice() - ($this->getPrice()  * $reducer);          
+            $this->discounted_price = $reducedPrice;
+            return $this;
+
+        } else {
+
+            $this->discounted_price = null;
+            return $this;
+        }
+
     }
 
     public function getType(): ?string
     {
-        return $this->type;
+      
+            return $this->type;
+        
     }
 
     public function setType(string $type): self
