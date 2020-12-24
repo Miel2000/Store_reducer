@@ -15,8 +15,22 @@ class DiscountRuleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('rule_expression', TextType::class)
-            ->add('discount_percent', NumberType::class)
+            ->add('rule_expression', TextType::class, [
+                'attr' => [
+                    'class' => 'text-left',
+                    'title' => 'Nom de la réduction'
+                    ]
+            ])
+            ->add('discount_percent', NumberType::class,[
+                'invalid_message' => 'Pas besoin d\'écrire le % :)',
+                'invalid_message_parameters' => ["{{ type }}" => "float"]
+            ] ,[
+                'attr' => [
+                    'class' => 'text-left',
+                    'placeholder' => "30%",
+                    'title' => 'Réduction en %'
+                    ]
+            ])
             ->add('save', SubmitType::class)
         ;
     }

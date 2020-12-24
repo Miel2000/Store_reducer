@@ -25,7 +25,7 @@ class DiscountRule
     public $rule_expression;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(name="discount_percent", type="float", nullable=true)
      * @Assert\Positive(message="Inserez un chiffre positif entre 1 et 50")
      *     * @Assert\LessThan(
      *     value = 51,
