@@ -81,9 +81,9 @@ class Product
         $this->discounted_price = $discounted_price;
         $reducer = 0.30; 
       
-        if($this->getPrice() >= 100 && ($product->getType() === 'Electro-ménagé') ){
+        if($this->getPrice() >= 100 && ($product->getType() === 'Electro-ménager') ){
 
-            $reducedPrice = $this->getPrice() - ($this->getPrice()  * $reducer);          
+            $reducedPrice = $this->getPrice() - ($this->getPrice()  * $reducer);
             $this->discounted_price = $reducedPrice;
             return $this;
 

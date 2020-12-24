@@ -19,7 +19,7 @@ class StoreFixtures extends Fixture
             $initPrice = 100 ;
             $product->setName($faker->word( $nb = 3, $asText = false ))
                     ->setPrice($faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 200))
-                    ->setType($faker->randomElement($array = array ('Electro-ménagé','Décoration Intérieur')))
+                    ->setType($faker->randomElement($array = array ('Electro-ménager','HiFi')))
                     ->setDiscountedPrice($initPrice, $product);
                     $manager->persist($product);
         };

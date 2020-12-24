@@ -3,6 +3,8 @@
 <br>
 
     <div class="container">
+    <h1 class="text-right">Création d'une promotion</h1>
+
     {{ form_start(form) }}
     
                 {{ form_row(form.rule_expression, {'label':'Sujet de la réduction : '}) }}
@@ -14,7 +16,7 @@
         </div>
     {{ form_end(form) }}
 
-    <h1>Store</h1>
+    <h1 class="text-right">Store</h1>
     <table class="table">
         <thead>
             <tr>
@@ -32,9 +34,15 @@
 
                 <td>{{ item.name }}</td>
 
+
                 <td>{{ item.price }} €</td>
 
-                <td>{{ item.discounted_price }} €</td>
+                {% if item.discounted_price %}
+                    <td>{{ item.discounted_price }} €</td>
+                    {% else %}
+                    <td>-</td>
+                {% endif %}
+
 
                 <td>@{{ item.type }}</td>
 
